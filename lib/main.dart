@@ -15,6 +15,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,9 +26,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: _auth.currentUser != null ? '/home' : '/login',
       routes: {
-        '/login': (context) => LoginPage(),
+        '/login': (context) => const LoginPage(),
         '/signup': (context) => SignupPage(),
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
       },
     );
   }

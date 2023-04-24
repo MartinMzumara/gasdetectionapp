@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -90,9 +91,20 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                   ),
                   const SizedBox(height: 16.0),
-                  TextButton(
-                    onPressed: _isLoading ? null : _signup,
-                    child: const Text('Create an account'),
+                  RichText(
+                    text: TextSpan(
+                      text: 'Does not have an Account? ',
+                      style: TextStyle(fontSize: 16),
+                      children: [
+                        TextSpan(
+                          text: 'Create an Account',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = _isLoading ? null : _signup,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

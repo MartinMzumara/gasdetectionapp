@@ -3,10 +3,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
-        android:label="LPG Gas Detector"
+        android:label="LeakSAFE"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDZC0E_io2suqWCNcjOtowAXG0dvOzY8uk"/> 
+        android:icon="@mipmap/launcher_icon">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyD7BIleIt3nlCDclAO2TlXmV3NGke3FlAU"/> 
         <activity
             android:name=".MainActivity"
             android:exported="true"

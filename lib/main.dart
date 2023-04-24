@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      darkTheme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xff000f19),
+      ),
       initialRoute: _auth.currentUser != null ? '/home' : '/login',
       routes: {
         '/login': (context) => const LoginPage(),

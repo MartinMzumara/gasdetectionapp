@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gasdetector/screens/device_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:gasdetector/services/geolocator.dart';
+
+import '../components/bar_chart.dart';
+import '../components/google_maps.dart';
+import '../constants.dart';
+import 'settings.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,35 +57,20 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 40),
               Text(
                 'Welcome, ${_user!.displayName}!',
-                style: const TextStyle(fontSize: 24),
+                style: kHeadingTextStyle,
               ),
-              const SizedBox(height: 8),
-              Text(
-                'Email: ${_user!.email}',
-                style: const TextStyle(fontSize: 16),
-              ),
+              const SizedBox(height: 24),
+
               const SizedBox(height: 16),
               Text(
                 'Gas Detection Status: ${isGasDetectionEnabled ? 'On' : 'Off'}',
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
 
               // Line chart to display gas levels over time
-              Expanded(
-                child: LineChart(
-                  LineChartData(
-                    lineBarsData: [
-                      LineChartBarData(
-                        spots: gasLevelData,
-                      ),
-                    ],
-                    minX: 0,
-                    maxX: 10,
-                    minY: 0,
-                    maxY: 10,
-                  ),
-                ),
+              const Expanded(
+                child: MyBarChart(),
               ),
 
               const SizedBox(height: 16),
@@ -94,38 +85,66 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.blueGrey[50],
                   ),
                   height: 200,
-                  child: GoogleMap(
-                    initialCameraPosition: const CameraPosition(
-                      target: LatLng(37.7749, -122.4194),
-                      zoom: 12,
-                    ),
-                    markers: <Marker>{
-                      const Marker(
-                        markerId: MarkerId('gas-leak'),
-                        position: LatLng(37.7749, -122.4194),
-                      ),
-                    },
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 16),
-
-              ElevatedButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushReplacementNamed(context, '/login');
-                },
-                child: const Text(
-                  'Log Out',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  child: MyMap(),
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              // sets the background color of the `BottomNavigationBar`
+              canvasColor: const Color(0xff001e33),
+            ),
+            child: BottomNavigationBar(
+              selectedItemColor: const Color(0xff4db5ff),
+              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
+              unselectedItemColor: const Color(0xffcceaff),
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home_filled),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.developer_board_rounded),
+                  label: 'Devices',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings_rounded),
+                  label: 'Settings',
+                ),
+              ],
+              currentIndex: 0,
+              onTap: (index) {
+                if (index == 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
+                } else if (index == 1) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DevicePage(),
+                    ),
+                  );
+                } else if (index == 2) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
+                  );
+                }
+              },
+            ),
           ),
         ),
       ),

@@ -16,37 +16,38 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(
-                height: 16,
-              ),
-              const Text(
-                'Settings',
-                style: kHeadingTextStyle,
-              ),
-              const SizedBox(height: 16),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushReplacementNamed(context, '/login');
-                },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(
+              height: 44,
+            ),
+            const Text(
+              'Settings',
+              style: kHeadingTextStyle,
+            ),
+            const SizedBox(height: 16),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                // ignore: use_build_context_synchronously
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: const Text(
                   'Log Out',
                   style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Padding(
@@ -56,7 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color(0xff000f19),
+              canvasColor: const Color(0xff001e33),
             ),
             child: BottomNavigationBar(
               selectedItemColor: const Color(0xff4db5ff),

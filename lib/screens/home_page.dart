@@ -48,48 +48,41 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              Text(
-                'Welcome, ${_user!.displayName}!',
-                style: kHeadingTextStyle,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 44),
+            Text(
+              'Welcome, ${_user!.displayName}!',
+              style: kHeadingTextStyle,
+            ),
+            const SizedBox(height: 24),
+
+            Text(
+              'Gas Detection Status: ${isGasDetectionEnabled ? 'On' : 'Off'}',
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+
+            // Line chart to display gas levels over time
+            const Expanded(
+              child: MyBarChart(),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Google Map to display location of gas leak
+
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                height: 250,
+                child: MyMap(),
               ),
-              const SizedBox(height: 24),
-
-              const SizedBox(height: 16),
-              Text(
-                'Gas Detection Status: ${isGasDetectionEnabled ? 'On' : 'Off'}',
-                style: const TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 16),
-
-              // Line chart to display gas levels over time
-              const Expanded(
-                child: MyBarChart(),
-              ),
-
-              const SizedBox(height: 16),
-
-              // Google Map to display location of gas leak
-
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blueGrey[50],
-                  ),
-                  height: 200,
-                  child: MyMap(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Padding(

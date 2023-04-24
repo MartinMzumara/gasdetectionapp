@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/google_maps.dart';
+import '../constants.dart';
 import 'home_page.dart';
 import 'settings.dart';
 
@@ -15,7 +16,24 @@ class _DevicePageState extends State<DevicePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MyMap(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(
+              height: 60,
+            ),
+            const Text(
+              'Devices',
+              style: kHeadingTextStyle,
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ClipRRect(
@@ -23,7 +41,7 @@ class _DevicePageState extends State<DevicePage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color(0xff000f19),
+              canvasColor: const Color(0xff001e33),
             ),
             child: BottomNavigationBar(
               selectedItemColor: const Color(0xff4db5ff),

@@ -29,12 +29,18 @@ flutter_launcher_icons:
   min_sdk_android: 21
 
 flutter_native_splash:
-  image: images/logo-color.png
+  image: images/logo.png
   color: "e6f4ff"
   
   android_12:
-    image: images/logo-color.png
+    image: images/logo.png
     color: "e6f4ff"
 
 flutter:
   uses-material-design: true
+  assets:
+    - images/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Regular.ttf

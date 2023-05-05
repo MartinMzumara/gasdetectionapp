@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -173,10 +174,53 @@ class _SignupPageState extends State<SignupPage> {
                       },
                     ),
                     const SizedBox(height: 16),
-                    TextButton(
-                      child: const Text('Already have an account? Login'),
-                      onPressed: () => Navigator.pushNamed(context, '/login'),
-                    ),
+                    Theme.of(context).brightness == Brightness.light
+                        ? RichText(
+                            text: TextSpan(
+                              text: 'Already have an Account? ',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Login',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xff1aa0ff),
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () =>
+                                        Navigator.pushNamed(context, '/login'),
+                                ),
+                              ],
+                            ),
+                          )
+                        : RichText(
+                            text: TextSpan(
+                              text: 'Already have an Account? ',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Login',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xff1aa0ff),
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/login');
+                                    },
+                                ),
+                              ],
+                            ),
+                          ),
                   ],
                 ),
               ),

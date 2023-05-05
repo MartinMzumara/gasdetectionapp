@@ -114,26 +114,49 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                 ),
                 const SizedBox(height: 16.0),
-                RichText(
-                  text: TextSpan(
-                    text: 'Does not have an Account? ',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Color(0xff1aa0ff),
-                      fontWeight: FontWeight.w300,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'Create an Account',
-                        style: const TextStyle(
-                          fontSize: 20,
+                Theme.of(context).brightness == Brightness.light
+                    ? RichText(
+                        text: TextSpan(
+                          text: 'Does not have an Account? ',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Create an Account',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                color: Color(0xff1aa0ff),
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = _isLoading ? null : _signup,
+                            ),
+                          ],
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = _isLoading ? null : _signup,
+                      )
+                    : RichText(
+                        text: TextSpan(
+                          text: 'Does not have an Account? ',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Create an Account',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                color: Color(0xff1aa0ff),
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = _isLoading ? null : _signup,
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

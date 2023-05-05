@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gasdetector/screens/device_page.dart';
+import 'package:gasdetector/screens/history_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -8,7 +8,7 @@ import 'package:gasdetector/services/geolocator.dart';
 
 import '../components/bar_chart.dart';
 import '../components/google_maps.dart';
-import '../constants.dart';
+import '../utils/constants.dart';
 import 'settings.dart';
 
 class HomePage extends StatefulWidget {
@@ -72,6 +72,14 @@ class _HomePageState extends State<HomePage> {
             ),
 
             const SizedBox(height: 24),
+            Text(
+              'Map',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            const SizedBox(height: 16),
 
             // Google Map to display location of gas leak
 
@@ -104,8 +112,8 @@ class _HomePageState extends State<HomePage> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.developer_board_rounded),
-                  label: 'Devices',
+                  icon: Icon(Icons.history_rounded),
+                  label: 'History',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.settings_rounded),

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gasdetector/screens/device_page.dart';
+import 'package:gasdetector/screens/history_page.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 import 'home_page.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -29,6 +29,25 @@ class _SettingsPageState extends State<SettingsPage> {
               style: kHeadingTextStyle,
             ),
             const SizedBox(height: 16),
+            Text(
+              'About',
+              style: kNormalTextStyle,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Help Center',
+              style: kNormalTextStyle,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Change Theme',
+              style: kNormalTextStyle,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Follow Us',
+              style: kNormalTextStyle,
+            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
@@ -69,8 +88,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.developer_board_rounded),
-                  label: 'Devices',
+                  icon: Icon(Icons.history_rounded),
+                  label: 'History',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.settings_rounded),

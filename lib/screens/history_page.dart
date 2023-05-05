@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../components/google_maps.dart';
-import '../constants.dart';
+import '../components/line_chart.dart';
+import '../utils/constants.dart';
 import 'home_page.dart';
 import 'settings.dart';
 
@@ -27,10 +28,11 @@ class _DevicePageState extends State<DevicePage> {
               height: 60,
             ),
             const Text(
-              'Devices',
+              'History',
               style: kHeadingTextStyle,
             ),
             const SizedBox(height: 16),
+            Expanded(child: MyLineChart()),
           ],
         ),
       ),
@@ -53,8 +55,8 @@ class _DevicePageState extends State<DevicePage> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.developer_board_rounded),
-                  label: 'Devices',
+                  icon: Icon(Icons.history_rounded),
+                  label: 'History',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.settings_rounded),

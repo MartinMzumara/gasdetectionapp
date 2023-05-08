@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gasdetector/screens/history_page.dart';
 
 import '../components/custom_icon.dart';
+import '../components/setting_cards.dart';
 import '../utils/constants.dart';
 import 'home_page.dart';
 import 'maps_page.dart';
@@ -31,24 +32,24 @@ class _SettingsPageState extends State<SettingsPage> {
               style: kHeadingTextStyle,
             ),
             const SizedBox(height: 16),
-            const Text(
-              'About',
-              style: kNormalTextStyle,
+            SettingsCard(
+              cardName: 'About',
+              iconName: Icons.info_outlined,
             ),
-            const SizedBox(height: 16),
-            const Text(
-              'Help Center',
-              style: kNormalTextStyle,
+            const SizedBox(height: 8),
+            SettingsCard(
+              cardName: 'Help Center',
+              iconName: Icons.help_center_outlined,
             ),
-            const SizedBox(height: 16),
-            const Text(
-              'Change Theme',
-              style: kNormalTextStyle,
+            const SizedBox(height: 8),
+            SettingsCard(
+              cardName: 'Change Theme',
+              iconName: Icons.token_outlined,
             ),
-            const SizedBox(height: 16),
-            const Text(
-              'Follow Us',
-              style: kNormalTextStyle,
+            const SizedBox(height: 8),
+            SettingsCard(
+              cardName: 'Follow Us',
+              iconName: Icons.facebook_outlined,
             ),
             const SizedBox(height: 16),
             ElevatedButton(
@@ -72,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Theme(

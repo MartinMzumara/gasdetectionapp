@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gasdetector/utils/constants.dart';
 
-import '../components/bar_chart.dart';
 import '../components/custom_icon.dart';
 import '../components/google_maps.dart';
 import 'history_page.dart';
@@ -49,7 +48,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Theme(

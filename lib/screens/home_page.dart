@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             const SizedBox(height: 44),
             Text(
-              'Welcome, ${_user!.displayName}!',
+              'Welcome, ${_user!.displayName}',
               style: kHeadingTextStyle,
             ),
             const SizedBox(height: 24),
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Theme(

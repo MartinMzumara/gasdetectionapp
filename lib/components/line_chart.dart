@@ -9,9 +9,9 @@ class MyLineChart extends StatefulWidget {
     Color? gradientColor2,
     Color? gradientColor3,
     Color? indicatorStrokeColor,
-  })  : gradientColor1 = gradientColor1 ?? Colors.blue,
-        gradientColor2 = gradientColor2 ?? Colors.pink,
-        gradientColor3 = gradientColor3 ?? Colors.red,
+  })  : gradientColor1 = gradientColor1 ?? const Color(0xff0095ff),
+        gradientColor2 = gradientColor2 ?? const Color(0xff0086e6),
+        gradientColor3 = gradientColor3 ?? const Color(0xff0068b3),
         indicatorStrokeColor = indicatorStrokeColor ?? Colors.blue;
 
   final Color gradientColor1;
@@ -39,7 +39,7 @@ class _MyLineChartState extends State<MyLineChart> {
   Widget bottomTitleWidgets(double value, TitleMeta meta, double chartWidth) {
     final style = TextStyle(
       fontWeight: FontWeight.bold,
-      color: Colors.pink,
+      color: const Color(0xff005999),
       fontSize: 18 * chartWidth / 500,
     );
     String text;
@@ -160,7 +160,7 @@ class _MyLineChartState extends State<MyLineChart> {
                   return spotIndexes.map((index) {
                     return TouchedSpotIndicatorData(
                       FlLine(
-                        color: Colors.pinkAccent,
+                        color: const Color(0xff005999),
                       ),
                       FlDotData(
                         show: true,

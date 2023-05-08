@@ -55,7 +55,7 @@ class _DevicePageState extends State<DevicePage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Theme(

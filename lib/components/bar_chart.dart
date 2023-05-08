@@ -8,7 +8,7 @@ class MyBarChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xffb3dfff),
+        color: const Color(0xffb3dfff),
         borderRadius: BorderRadius.circular(10),
       ),
       child: BarChart(
@@ -19,7 +19,7 @@ class MyBarChart extends StatelessWidget {
           barGroups: barGroups,
           gridData: FlGridData(show: false),
           alignment: BarChartAlignment.spaceAround,
-          maxY: 20,
+          maxY: 200,
         ),
       ),
     );
@@ -40,7 +40,7 @@ class MyBarChart extends StatelessWidget {
             return BarTooltipItem(
               rod.toY.round().toString(),
               const TextStyle(
-                color: Color(0xff99d5ff),
+                color: Color(0xff0095ff),
                 fontWeight: FontWeight.bold,
               ),
             );
@@ -49,8 +49,8 @@ class MyBarChart extends StatelessWidget {
       );
 
   Widget getTitles(double value, TitleMeta meta) {
-    final style = TextStyle(
-      color: Color(0xff0095ff),
+    final style = const TextStyle(
+      color: Color(0xff005999),
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -112,7 +112,7 @@ class MyBarChart extends StatelessWidget {
         show: false,
       );
 
-  LinearGradient get _barsGradient => LinearGradient(
+  LinearGradient get _barsGradient => const LinearGradient(
         colors: [
           Color(0xff005999),
           Color(0xff0095ff),
@@ -126,7 +126,7 @@ class MyBarChart extends StatelessWidget {
           x: 0,
           barRods: [
             BarChartRodData(
-              toY: 8,
+              toY: 23,
               gradient: _barsGradient,
             )
           ],
@@ -136,7 +136,7 @@ class MyBarChart extends StatelessWidget {
           x: 1,
           barRods: [
             BarChartRodData(
-              toY: 10,
+              toY: 76,
               gradient: _barsGradient,
             )
           ],
@@ -156,7 +156,7 @@ class MyBarChart extends StatelessWidget {
           x: 3,
           barRods: [
             BarChartRodData(
-              toY: 15,
+              toY: 25,
               gradient: _barsGradient,
             )
           ],
@@ -166,7 +166,7 @@ class MyBarChart extends StatelessWidget {
           x: 4,
           barRods: [
             BarChartRodData(
-              toY: 13,
+              toY: 56,
               gradient: _barsGradient,
             )
           ],
@@ -176,7 +176,7 @@ class MyBarChart extends StatelessWidget {
           x: 5,
           barRods: [
             BarChartRodData(
-              toY: 10,
+              toY: 127,
               gradient: _barsGradient,
             )
           ],

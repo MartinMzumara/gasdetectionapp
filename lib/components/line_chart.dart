@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:gasdetector/utils/constants.dart';
 
 class MyLineChart extends StatefulWidget {
   const MyLineChart({
@@ -230,6 +231,7 @@ class _MyLineChartState extends State<MyLineChart> {
                   axisNameWidget: const Text(
                     'GAS LEVELS',
                     textAlign: TextAlign.left,
+                    style: kNormalTextStyle,
                   ),
                   axisNameSize: 24,
                   sideTitles: SideTitles(

@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
 
+const kLightTextColor = Color(0xffe6f4ff);
+
+const kLightButtonColor = Color(0xff002d4c);
+
 const kHeadingTextStyle = TextStyle(
-  fontSize: 24,
-  fontWeight: FontWeight.w300,
+  fontSize: 36,
+  fontWeight: FontWeight.w700,
+  //fontFamily: 'Inter',
 );
 
 const kNormalTextStyle = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w400,
+  fontFamily: 'Helvetica',
 );
 
-const kLightTextColor = Color(0xffe6f4ff);
+const kLargeTextStyle = TextStyle(
+  fontSize: 28,
+  fontWeight: FontWeight.w300,
+);
 
-const kLightButtonColor = Color(0xff002d4c);
+const kMyTextStyle = TextStyle(
+  fontFamily: 'Helvetica',
+  wordSpacing: 2,
+);
+
+const kBackgroundColor = Color(0xff202125);
+
+const kSelectedIcon = Color(0xff1aa0ff);
+
+const kUnselectedIcon = Color(0xffe6f4ff);

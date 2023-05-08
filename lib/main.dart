@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gasdetector/utils/constants.dart';
 
 import 'screens/home_page.dart';
-import 'screens/login_page.dart';
+import 'screens/auth/login_page.dart';
 import 'screens/signup_page.dart';
 
 void main() async {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xff000f19),
+        scaffoldBackgroundColor: kBackgroundColor,
       ),
       initialRoute: _auth.currentUser != null ? '/home' : '/login',
       routes: {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gasdetector/screens/auth/signup_page.dart';
 import 'package:gasdetector/utils/constants.dart';
 
 import 'screens/home_page.dart';
 import 'screens/auth/login_page.dart';
-import 'screens/signup_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             const GasIndicator(
-              gasLevel: 40,
+              gasLevel: 30,
               minLevel: 50,
               maxLevel: 200,
             ),

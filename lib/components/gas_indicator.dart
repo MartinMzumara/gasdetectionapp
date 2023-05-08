@@ -36,7 +36,9 @@ class GasIndicator extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.0),
-            color: const Color(0xff393b3e),
+            color: Theme.of(context).brightness == Brightness.light
+                ? const Color(0xffe9e9ea)
+                : const Color(0xff393b3e),
           ),
           alignment: Alignment(1.0, 1.0),
           height: 170,
@@ -68,9 +70,12 @@ class GasIndicator extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   text: '$gasLevel ',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 80,
                     fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? kBackgroundColor
+                        : kUnselectedIcon,
                   ),
                   children: const [
                     TextSpan(

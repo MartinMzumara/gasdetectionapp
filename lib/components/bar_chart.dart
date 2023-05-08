@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class MyBarChart extends StatelessWidget {
-  const MyBarChart();
+  const MyBarChart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class MyBarChart extends StatelessWidget {
       );
 
   Widget getTitles(double value, TitleMeta meta) {
-    final style = const TextStyle(
+    const style = TextStyle(
       color: Color(0xff005999),
       fontWeight: FontWeight.bold,
       fontSize: 14,
@@ -57,25 +57,25 @@ class MyBarChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Mn';
+        text = 'Mon';
         break;
       case 1:
-        text = 'Te';
+        text = 'Tue';
         break;
       case 2:
-        text = 'Wd';
+        text = 'Wed';
         break;
       case 3:
-        text = 'Tu';
+        text = 'Thur';
         break;
       case 4:
-        text = 'Fr';
+        text = 'Fri';
         break;
       case 5:
-        text = 'St';
+        text = 'Sat';
         break;
       case 6:
-        text = 'Sn';
+        text = 'Sun';
         break;
       default:
         text = '';

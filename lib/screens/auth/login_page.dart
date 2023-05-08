@@ -38,13 +38,13 @@ class _LoginPageState extends State<LoginPage> {
                     Theme.of(context).brightness == Brightness.light
                         ? const Image(
                             image: AssetImage(
-                              'images/leaksafe-dark.png',
+                              'assets/images/leaksafe-dark.png',
                             ),
                             height: 60,
                           )
                         : const Image(
                             image: AssetImage(
-                              'images/leaksafe-light.png',
+                              'assets/images/leaksafe-light.png',
                             ),
                             height: 60,
                           ),

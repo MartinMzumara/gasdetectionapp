@@ -1,8 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gasdetector/utils/constants.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -37,13 +40,13 @@ class _SignupPageState extends State<SignupPage> {
                         Theme.of(context).brightness == Brightness.light
                             ? const Image(
                                 image: AssetImage(
-                                  'images/leaksafe-dark.png',
+                                  'assets/images/leaksafe-dark.png',
                                 ),
                                 height: 60,
                               )
                             : const Image(
                                 image: AssetImage(
-                                  'images/leaksafe-light.png',
+                                  'assets/images/leaksafe-light.png',
                                 ),
                                 height: 60,
                               ),
@@ -180,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
                               text: 'Already have an Account? ',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black,
+                                color: kBackgroundColor,
                                 fontWeight: FontWeight.w300,
                               ),
                               children: [

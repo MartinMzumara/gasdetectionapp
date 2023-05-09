@@ -40,7 +40,7 @@ class GasIndicator extends StatelessWidget {
                 ? const Color(0xffe9e9ea)
                 : const Color(0xff393b3e),
           ),
-          alignment: Alignment(1.0, 1.0),
+          alignment: const Alignment(1.0, 1.0),
           height: 170,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -90,7 +90,7 @@ class GasIndicator extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 16,
           height: 16,
         ),
@@ -106,13 +106,15 @@ class GasIndicator extends StatelessWidget {
                 height: 30,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Text(
               text,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: Theme.of(context).brightness == Brightness.light
+                    ? kBackgroundColor
+                    : kUnselectedIcon,
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),

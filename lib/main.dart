@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       initialRoute: _auth.currentUser != null ? '/home' : '/login',
       routes: {
         '/login': (context) => const LoginPage(),
-        '/signup': (context) => SignupPage(),
+        '/signup': (context) => const SignupPage(),
         '/home': (context) => const HomePage(),
       },
     );

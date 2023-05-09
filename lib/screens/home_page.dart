@@ -8,9 +8,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:gasdetector/services/geolocator.dart';
+import 'dart:async';
+import 'dart:math';
 
-import '../components/bar_chart.dart';
-import '../components/google_maps.dart';
 import '../utils/constants.dart';
 import 'settings.dart';
 
@@ -26,12 +26,27 @@ class _HomePageState extends State<HomePage> {
   bool isGasDetectionEnabled = false;
   List<FlSpot> gasLevelData = [];
 
+  int randomValue = Random().nextInt(221) + 30;
+
+  late Timer timer;
+
   @override
   void initState() {
     super.initState();
+    timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      setState(() {
+        randomValue = Random().nextInt(221) + 30;
+      });
+    });
 
     retrieveGasLevelData();
     determinePosition();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   // Retrieve gas level data from Firebase
@@ -66,11 +81,12 @@ class _HomePageState extends State<HomePage> {
               style: kLargeTextStyle,
             ),
             const SizedBox(height: 16),
-            const GasIndicator(
-              gasLevel: 30,
+            GasIndicator(
+              gasLevel: randomValue.toDouble(),
               minLevel: 50,
               maxLevel: 200,
             ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -80,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.circular(10),
           child: Theme(
             data: Theme.of(context).copyWith(
-              // sets the background color of the `BottomNavigationBar`
+              //background color of the BottomNavigationBar
               canvasColor: const Color(0xff393b3e),
             ),
             child: BottomNavigationBar(

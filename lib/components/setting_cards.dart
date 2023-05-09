@@ -12,7 +12,7 @@ class SettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).brightness == Brightness.light
-          ? const Color(0xffe9e9ea)
+          ? const Color(0xffd3d3d4)
           : const Color(0xff232529),
       elevation: 0,
       child: ListTile(

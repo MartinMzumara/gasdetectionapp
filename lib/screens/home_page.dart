@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             GasIndicator(
               gasLevel: randomValue.toDouble(),
-              minLevel: 50,
+              minLevel: 85,
               maxLevel: 200,
             ),
             const SizedBox(height: 24),

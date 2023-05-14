@@ -48,11 +48,11 @@ class _HomePageState extends State<HomePage> {
     determinePosition();
   }
 
-  // @override
-  // void dispose() {
-  //   timer!.cancel();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
+  }
 
   // Retrieve gas level data from Firebase
   void retrieveGasLevelData() {

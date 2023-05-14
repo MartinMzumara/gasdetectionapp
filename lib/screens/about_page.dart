@@ -9,6 +9,9 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       slivers: [
         SliverAppBar(
           expandedHeight: 70,
@@ -24,7 +27,11 @@ class AboutPage extends StatelessWidget {
               ),
             ),
             centerTitle: true,
-            background: Container(color: const Color(0xff16171a)),
+            background: Container(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? const Color(0xffd3d3d4)
+                  : const Color(0xff393b3e),
+            ),
           ),
         ),
         SliverToBoxAdapter(
@@ -32,34 +39,64 @@ class AboutPage extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Gas Leakage Detection App',
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? const Color(0xffd3d3d4)
+                            : const Color(0xff393b3e),
+                      ),
+                      child: Theme.of(context).brightness == Brightness.light
+                          ? const Image(
+                              image: AssetImage(
+                                'assets/images/leaksafe-dark.png',
+                              ),
+                              height: 60,
+                            )
+                          : const Image(
+                              image: AssetImage(
+                                'assets/images/leaksafe-light.png',
+                              ),
+                              height: 60,
+                            ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                const Text(
+                  'LeakSAFE',
                   style: kHeadingTextStyle,
                 ),
-                SizedBox(height: 10),
-                Text(
+                const Text(
                   'Version 1.0.0',
                   style: kLargeTextStyle,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   'Description:',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'This app detects gas leakage and sends notifications to the user. The app also provides real-time gas concentration levels and alerts the user when the concentration exceeds a certain limit.',
                   style: kNormalTextStyle,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   'Developed by:',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Martin & Harry',
-                  style: kLargeTextStyle,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                 ),
               ],
             ),

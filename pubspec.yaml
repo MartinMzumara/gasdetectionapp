@@ -19,6 +19,8 @@ dependencies:
   flutter_local_notifications: ^14.0.0+2
   url_launcher: ^6.1.11
   youtube_player_flutter: ^8.1.2
+  webview_flutter: ^4.2.0
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -29,16 +31,16 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo-color.png"
+  image_path: "assets/images/logo.png"
   min_sdk_android: 21
 
 flutter_native_splash:
   image: assets/images/logo.png
-  color: "202125"
+  color: "046380"
   
   android_12:
     image: assets/images/logo.png
-    color: "202125"
+    color: "046380"
 
 flutter:
   uses-material-design: true

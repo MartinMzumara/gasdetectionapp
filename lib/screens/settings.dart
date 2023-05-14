@@ -60,11 +60,6 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             const SizedBox(height: 8),
-            SettingsCard(
-              cardName: 'Change Theme',
-              iconName: Icons.token_outlined,
-              onTap: () {},
-            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {

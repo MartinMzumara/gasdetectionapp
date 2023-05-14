@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 const kLightTextColor = Color(0xffe6f4ff);
 
-const kLightButtonColor = Color(0xff002d4c);
-
 const kHeadingTextStyle = TextStyle(
   fontSize: 36,
   fontWeight: FontWeight.w700,

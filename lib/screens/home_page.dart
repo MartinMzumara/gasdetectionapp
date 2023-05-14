@@ -4,13 +4,12 @@ import 'package:gasdetector/components/custom_icon.dart';
 import 'package:gasdetector/components/gas_indicator.dart';
 import 'package:gasdetector/screens/history_page.dart';
 import 'package:gasdetector/screens/maps_page.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:gasdetector/services/geolocator.dart';
 import 'dart:async';
-import 'dart:math';
 
+import '../services/notifications.dart';
 import '../utils/constants.dart';
 import 'settings.dart';
 
@@ -23,19 +22,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final User? _user = FirebaseAuth.instance.currentUser;
-  bool isGasDetectionEnabled = false;
   List<FlSpot> gasLevelData = [];
+  double _gasConcentration = 0;
+  final NotificationService _notificationService = NotificationService();
 
-  int randomValue = Random().nextInt(221) + 30;
+  double _value = 0;
+  final List<double> _specifiedValues = [50.0, 120.0, 230.0];
+  int _currentIndex = 0;
 
-  late Timer timer;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    _notificationService.init();
+    timer = Timer.periodic(const Duration(seconds: 10), (timer) {
       setState(() {
-        randomValue = Random().nextInt(221) + 30;
+        _value = _specifiedValues[_currentIndex];
+        _currentIndex = (_currentIndex + 1) % _specifiedValues.length;
+        onGasConcentrationChanged(_value);
       });
     });
 
@@ -43,11 +48,11 @@ class _HomePageState extends State<HomePage> {
     determinePosition();
   }
 
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   timer!.cancel();
+  //   super.dispose();
+  // }
 
   // Retrieve gas level data from Firebase
   void retrieveGasLevelData() {
@@ -61,6 +66,21 @@ class _HomePageState extends State<HomePage> {
       });
       setState(() {});
     });
+  }
+
+  void onGasConcentrationChanged(double concentration) {
+    setState(() {
+      _gasConcentration = concentration;
+    });
+    if (_gasConcentration >= 150) {
+      // adjust the threshold as needed
+      _notificationService.showNotification(
+        id: 0,
+        title: 'Gas Leak Detected',
+        body:
+            'The gas concentration has reached ${_gasConcentration.toStringAsFixed(2)} ppm!',
+      );
+    }
   }
 
   @override
@@ -82,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             GasIndicator(
-              gasLevel: randomValue.toDouble(),
+              gasLevel: _value,
               minLevel: 85,
               maxLevel: 200,
             ),

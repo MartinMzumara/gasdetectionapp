@@ -7,6 +7,7 @@ class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignupPageState createState() => _SignupPageState();
 }
 
@@ -164,9 +165,9 @@ class _SignupPageState extends State<SignupPage> {
                                 _usernameController.text.trim());
                             await user
                                 .reload(); // Reload the user to see the updated display name
+                            // ignore: use_build_context_synchronously
                             Navigator.pushReplacementNamed(context, '/home');
                           } catch (e) {
-                            print('Error: $e');
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text(

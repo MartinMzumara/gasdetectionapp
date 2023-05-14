@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../components/bar_chart.dart';
 import '../components/custom_icon.dart';
-import '../components/google_maps.dart';
 import '../components/line_chart.dart';
 import '../utils/constants.dart';
 import 'home_page.dart';

@@ -40,7 +40,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                   borderRadius: BorderRadius.circular(10),
                   child: Expanded(
                       child: SizedBox(
-                          height: constraints.maxHeight * 0.8, child: MyMap())),
+                          height: constraints.maxHeight * 0.8,
+                          child: const MyMap())),
                 ),
               ],
             );

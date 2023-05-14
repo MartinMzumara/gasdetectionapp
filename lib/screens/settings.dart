@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gasdetector/screens/about_page.dart';
+import 'package:gasdetector/screens/help_center.dart';
 import 'package:gasdetector/screens/history_page.dart';
 
 import '../components/custom_icon.dart';
@@ -35,21 +37,33 @@ class _SettingsPageState extends State<SettingsPage> {
             SettingsCard(
               cardName: 'About',
               iconName: Icons.info_outlined,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AboutPage(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 8),
             SettingsCard(
               cardName: 'Help Center',
               iconName: Icons.help_center_outlined,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HelpCenterPage(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 8),
             SettingsCard(
               cardName: 'Change Theme',
               iconName: Icons.token_outlined,
-            ),
-            const SizedBox(height: 8),
-            SettingsCard(
-              cardName: 'Follow Us',
-              iconName: Icons.facebook_outlined,
+              onTap: () {},
             ),
             const SizedBox(height: 16),
             ElevatedButton(

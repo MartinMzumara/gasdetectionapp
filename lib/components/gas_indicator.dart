@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gasdetector/utils/constants.dart';
 
-class GasIndicator extends StatelessWidget {
+class GasIndicator extends StatefulWidget {
   final double gasLevel; // gas concentration level
   final double minLevel; // minimum safe level
   final double maxLevel; // maximum safe level
-
   const GasIndicator({
     Key? key,
     required this.gasLevel,
@@ -14,15 +13,25 @@ class GasIndicator extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<GasIndicator> createState() => _GasIndicatorState();
+}
+
+class _GasIndicatorState extends State<GasIndicator> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Color color;
     String text;
 
     // Determine the color and text based on the gas level
-    if (gasLevel < minLevel) {
+    if (widget.gasLevel < widget.minLevel) {
       color = Colors.green;
       text = 'Safe';
-    } else if (gasLevel > maxLevel) {
+    } else if (widget.gasLevel > widget.maxLevel) {
       color = Colors.red;
       text = 'Danger';
     } else {
@@ -47,7 +56,7 @@ class GasIndicator extends StatelessWidget {
             children: [
               RichText(
                 text: TextSpan(
-                  text: '$gasLevel ',
+                  text: '${widget.gasLevel} ',
                   style: TextStyle(
                     fontSize: 80,
                     fontWeight: FontWeight.bold,

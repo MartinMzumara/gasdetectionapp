@@ -25,6 +25,9 @@ class _SignupPageState extends State<SignupPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
           slivers: [
             SliverToBoxAdapter(
               child: Form(
@@ -76,6 +79,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     TextFormField(
                       controller: _emailController,
+                      autofocus: true,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         labelText: 'Email',
@@ -91,6 +95,7 @@ class _SignupPageState extends State<SignupPage> {
                     const SizedBox(height: 16.0),
                     TextFormField(
                       controller: _usernameController,
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
                         labelText: 'Username',
@@ -107,6 +112,7 @@ class _SignupPageState extends State<SignupPage> {
                     TextFormField(
                       controller: _passwordController,
                       obscureText: true,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         labelText: 'Password',
                         border: OutlineInputBorder(),
@@ -125,6 +131,7 @@ class _SignupPageState extends State<SignupPage> {
                     TextFormField(
                       controller: _confirmPasswordController,
                       obscureText: true,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         labelText: 'Confirm Password',
                         border: OutlineInputBorder(),

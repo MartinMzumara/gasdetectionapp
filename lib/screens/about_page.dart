@@ -14,13 +14,17 @@ class AboutPage extends StatelessWidget {
       ),
       slivers: [
         SliverAppBar(
+          leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(Icons.arrow_back_ios),
+          ),
           expandedHeight: 70,
           elevation: 0,
           floating: true,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             title: const Text(
-              'ABOUT',
+              'About',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -71,32 +75,32 @@ class AboutPage extends StatelessWidget {
                   height: 24,
                 ),
                 const Text(
-                  'LeakSAFE',
-                  style: kHeadingTextStyle,
+                  'Version',
+                  style: kLargeTextStyle,
                 ),
                 const Text(
-                  'Version 1.0.0',
-                  style: kLargeTextStyle,
+                  '1.0.0',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 const Text(
                   'Description:',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: kLargeTextStyle,
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   'This app detects gas leakage and sends notifications to the user. The app also provides real-time gas concentration levels and alerts the user when the concentration exceeds a certain limit.',
-                  style: kNormalTextStyle,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 const Text(
                   'Developed by:',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: kLargeTextStyle,
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   'Martin & Harry',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

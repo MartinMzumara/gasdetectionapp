@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   double _gasConcentration = 0;
   final NotificationService _notificationService = NotificationService();
 
-  double _value = 0;
-  final List<double> _specifiedValues = [50.0, 120.0, 230.0];
+  double _value = 127;
+  final List<double> _specifiedValues = [59.0, 83.7, 236.3];
   int _currentIndex = 0;
 
   Timer? timer;
@@ -36,16 +36,17 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _notificationService.init();
-    timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       setState(() {
+        // onGasConcentrationChanged(_value);
         _value = _specifiedValues[_currentIndex];
         _currentIndex = (_currentIndex + 1) % _specifiedValues.length;
-        onGasConcentrationChanged(_value);
       });
     });
 
     retrieveGasLevelData();
     determinePosition();
+    onGasConcentrationChanged(_value);
   }
 
   @override
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _gasConcentration = concentration;
     });
-    if (_gasConcentration >= 150) {
+    if (_gasConcentration >= 100) {
       // adjust the threshold as needed
       _notificationService.showNotification(
         id: 0,
@@ -90,7 +91,17 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const SizedBox(height: 44),
+            const SizedBox(height: 56),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: const [
+            //     Icon(
+            //       Icons.person,
+            //       size: 32,
+            //     )
+            //   ],
+            // ),
+            // const SizedBox(height: 16),
             Text(
               'Welcome, ${_user!.displayName}',
               style: kHeadingTextStyle,
@@ -117,19 +128,24 @@ class _HomePageState extends State<HomePage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               //background color of the BottomNavigationBar
-              canvasColor: const Color(0xff393b3e),
+              canvasColor: Theme.of(context).brightness == Brightness.light
+                  ? const Color(0xffd3d3d4)
+                  : const Color(0xff393b3e),
             ),
             child: BottomNavigationBar(
-              selectedItemColor: const Color(0xff4db5ff),
-              unselectedItemColor: const Color(0xffcceaff),
+              selectedItemColor: kSelectedIcon,
+              unselectedItemColor:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : kUnselectedIcon,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
               unselectedLabelStyle:
                   const TextStyle(fontWeight: FontWeight.w400),
               iconSize: 28,
-              items: const [
-                BottomNavigationBarItem(
+              items: [
+                const BottomNavigationBarItem(
                     icon: MyIcon(
                       assetPath: 'assets/icons/home.svg',
                       color: kSelectedIcon,
@@ -139,7 +155,9 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/history.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'History',
                   tooltip: 'History',
@@ -147,7 +165,9 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/map.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Map',
                   tooltip: 'Map',
@@ -155,7 +175,9 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/settings.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Settings',
                   tooltip: 'Settings',

@@ -19,33 +19,24 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 44),
-
-                const Text(
-                  'Map',
-                  style: kHeadingTextStyle,
-                ),
-
-                const SizedBox(height: 16),
-
-                // Google Map to display location of gas leak
-
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Expanded(
-                      child: SizedBox(
-                          height: constraints.maxHeight * 0.8,
-                          child: const MyMap())),
-                ),
-              ],
-            );
-          },
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 56),
+            const Text(
+              'Map',
+              style: kHeadingTextStyle,
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: const MyMap(),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
         ),
       ),
       bottomNavigationBar: Padding(
@@ -55,34 +46,43 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color(0xff393b3e),
+              canvasColor: Theme.of(context).brightness == Brightness.light
+                  ? const Color(0xffd3d3d4)
+                  : const Color(0xff393b3e),
             ),
             child: BottomNavigationBar(
-              selectedItemColor: const Color(0xff4db5ff),
-              unselectedItemColor: const Color(0xffcceaff),
+              selectedItemColor: kSelectedIcon,
+              unselectedItemColor:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : kUnselectedIcon,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
               unselectedLabelStyle:
                   const TextStyle(fontWeight: FontWeight.w400),
               iconSize: 28,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
                     icon: MyIcon(
                       assetPath: 'assets/icons/home.svg',
-                      color: kUnselectedIcon,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : kUnselectedIcon,
                     ),
                     label: 'Home',
                     tooltip: 'Home'),
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/history.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'History',
                   tooltip: 'History',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/map.svg',
                     color: kSelectedIcon,
@@ -93,7 +93,9 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/settings.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Settings',
                   tooltip: 'Settings',

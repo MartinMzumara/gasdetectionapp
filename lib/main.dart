@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: const Color(0xffe9e9ea),
+        canvasColor: Theme.of(context).brightness == Brightness.light
+            ? const Color(0xffd3d3d4)
+            : const Color(0xff393b3e),
       ),
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: kBackgroundColor,

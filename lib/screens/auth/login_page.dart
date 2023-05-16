@@ -23,6 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -71,6 +74,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   controller: _emailController,
+                  autofocus: true,
+                  textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -85,8 +90,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16.0),
                 TextFormField(
+                  // autofocus: true,
                   controller: _passwordController,
                   obscureText: true,
+                  textInputAction: TextInputAction.next,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your password';

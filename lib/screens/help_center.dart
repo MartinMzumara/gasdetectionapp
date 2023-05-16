@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gasdetector/screens/webview.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class HelpCenterPage extends StatelessWidget {
   const HelpCenterPage({super.key});
@@ -16,13 +15,17 @@ class HelpCenterPage extends StatelessWidget {
         ),
         slivers: [
           SliverAppBar(
+            leading: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Icon(Icons.arrow_back_ios),
+            ),
             expandedHeight: 70,
             elevation: 0,
             floating: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text(
-                'HELP CENTER',
+                'Help Center',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -61,14 +64,26 @@ class HelpCenterPage extends StatelessWidget {
                     'Contact Information:',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 16),
                   GestureDetector(
-                    child: const Text(
-                      'support@gasleakagedetection.com',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                      ),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.mail_outline,
+                          color: Colors.blue,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Text(
+                          'support@gasleakagedetection.com',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ],
                     ),
                     onTap: () async {
                       final Uri params = Uri(
@@ -89,15 +104,27 @@ class HelpCenterPage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 16,
                   ),
                   GestureDetector(
-                    child: const Text(
-                      '+265 884-630-834',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 16,
-                      ),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.phone_outlined,
+                          color: Colors.blue,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Text(
+                          '+265 884-630-834',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ],
                     ),
                     onTap: () async {
                       final Uri params = Uri(

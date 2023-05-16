@@ -60,26 +60,33 @@ class _DevicePageState extends State<DevicePage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color(0xff393b3e),
+              canvasColor: Theme.of(context).brightness == Brightness.light
+                  ? const Color(0xffd3d3d4)
+                  : const Color(0xff393b3e),
             ),
             child: BottomNavigationBar(
-              selectedItemColor: const Color(0xff4db5ff),
-              unselectedItemColor: const Color(0xffcceaff),
+              selectedItemColor: kSelectedIcon,
+              unselectedItemColor:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : kUnselectedIcon,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
               unselectedLabelStyle:
                   const TextStyle(fontWeight: FontWeight.w400),
               iconSize: 28,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
                     icon: MyIcon(
                       assetPath: 'assets/icons/home.svg',
-                      color: kUnselectedIcon,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : kUnselectedIcon,
                     ),
                     label: 'Home',
                     tooltip: 'Home'),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/history.svg',
                     color: kSelectedIcon,
@@ -90,7 +97,9 @@ class _DevicePageState extends State<DevicePage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/map.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Map',
                   tooltip: 'Map',
@@ -98,7 +107,9 @@ class _DevicePageState extends State<DevicePage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/settings.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Settings',
                   tooltip: 'Settings',

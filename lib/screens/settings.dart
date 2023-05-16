@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gasdetector/screens/about_page.dart';
 import 'package:gasdetector/screens/help_center.dart';
 import 'package:gasdetector/screens/history_page.dart';
+import 'package:gasdetector/screens/privacy_policy.dart';
+import 'package:gasdetector/screens/terms.dart';
 
 import '../components/custom_icon.dart';
 import '../components/setting_cards.dart';
@@ -36,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const SizedBox(height: 16),
             SettingsCard(
               cardName: 'About',
-              iconName: Icons.info_outlined,
+              iconPath: 'assets/icons/info.svg',
               onTap: () {
                 Navigator.push(
                   context,
@@ -49,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const SizedBox(height: 8),
             SettingsCard(
               cardName: 'Help Center',
-              iconName: Icons.help_center_outlined,
+              iconPath: 'assets/icons/help.svg',
               onTap: () {
                 Navigator.push(
                   context,
@@ -58,6 +60,32 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 );
               },
+            ),
+            const SizedBox(height: 8),
+            SettingsCard(
+              cardName: 'Terms and Conditions',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TermsAndConditionsPage(),
+                  ),
+                );
+              },
+              iconPath: 'assets/icons/page.svg',
+            ),
+            const SizedBox(height: 8),
+            SettingsCard(
+              cardName: 'Privacy Policy',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyPage(),
+                  ),
+                );
+              },
+              iconPath: 'assets/icons/privacy.svg',
             ),
             const SizedBox(height: 8),
             const SizedBox(height: 16),
@@ -88,29 +116,38 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Theme(
             data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color(0xff393b3e),
+              canvasColor: Theme.of(context).brightness == Brightness.light
+                  ? const Color(0xffd3d3d4)
+                  : const Color(0xff393b3e),
             ),
             child: BottomNavigationBar(
-              selectedItemColor: const Color(0xff4db5ff),
-              unselectedItemColor: const Color(0xffcceaff),
+              selectedItemColor: kSelectedIcon,
+              unselectedItemColor:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : kUnselectedIcon,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
               unselectedLabelStyle:
                   const TextStyle(fontWeight: FontWeight.w400),
               iconSize: 28,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
                     icon: MyIcon(
                       assetPath: 'assets/icons/home.svg',
-                      color: kUnselectedIcon,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : kUnselectedIcon,
                     ),
                     label: 'Home',
                     tooltip: 'Home'),
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/history.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'History',
                   tooltip: 'History',
@@ -118,12 +155,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/map.svg',
-                    color: kUnselectedIcon,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : kUnselectedIcon,
                   ),
                   label: 'Map',
                   tooltip: 'Map',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: MyIcon(
                     assetPath: 'assets/icons/settings.svg',
                     color: kSelectedIcon,

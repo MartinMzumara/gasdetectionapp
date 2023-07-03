@@ -19,13 +19,13 @@ class _DevicePageState extends State<DevicePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
+      body: const Padding(
+        padding: EdgeInsets.symmetric(
           horizontal: 16,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
+          children: [
             SizedBox(
               height: 60,
             ),

@@ -66,8 +66,8 @@ class HelpCenterPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   GestureDetector(
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Icon(
                           Icons.mail_outline,
                           color: Colors.blue,
@@ -107,8 +107,8 @@ class HelpCenterPage extends StatelessWidget {
                     height: 16,
                   ),
                   GestureDetector(
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Icon(
                           Icons.phone_outlined,
                           color: Colors.blue,

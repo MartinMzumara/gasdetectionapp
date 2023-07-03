@@ -7,7 +7,6 @@ import 'package:gasdetector/screens/maps_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:gasdetector/services/geolocator.dart';
-import 'dart:async';
 
 import '../services/notifications.dart';
 import '../utils/constants.dart';
@@ -22,49 +21,41 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final User? _user = FirebaseAuth.instance.currentUser;
+  String data = '00.0';
   List<FlSpot> gasLevelData = [];
   double _gasConcentration = 0;
   final NotificationService _notificationService = NotificationService();
-
-  double _value = 127;
-  final List<double> _specifiedValues = [59.0, 83.7, 236.3];
-  int _currentIndex = 0;
-
-  Timer? timer;
 
   @override
   void initState() {
     super.initState();
     _notificationService.init();
-    timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      setState(() {
-        // onGasConcentrationChanged(_value);
-        _value = _specifiedValues[_currentIndex];
-        _currentIndex = (_currentIndex + 1) % _specifiedValues.length;
-      });
-    });
 
-    retrieveGasLevelData();
+    listenToDataChanges();
+
+    //retrieveGasLevelData();
     determinePosition();
-    onGasConcentrationChanged(_value);
+    onGasConcentrationChanged(double.parse(data));
   }
 
-  @override
-  void dispose() {
-    timer!.cancel();
-    super.dispose();
+  void listenToDataChanges() {
+    final databaseReference = FirebaseDatabase.instance.ref();
+    databaseReference.child("sensor/gas").onValue.listen((event) {
+      setState(() {
+        // Process the retrieved data
+        Object? values = event.snapshot.value;
+        data = values.toString();
+      });
+    });
   }
 
   // Retrieve gas level data from Firebase
   void retrieveGasLevelData() {
     final databaseReference = FirebaseDatabase.instance.ref();
-    databaseReference.child('gas-levels').onValue.listen((event) {
-      DataSnapshot snapshot = event.snapshot;
-      Map<dynamic, dynamic>? data = snapshot.value as Map?;
-      gasLevelData.clear();
-      data!.forEach((key, value) {
-        gasLevelData.add(FlSpot(double.parse(key), value));
-      });
+    databaseReference.child('sensor/gas').onValue.listen((event) {
+      // Process the retrieved data
+      Map<dynamic, dynamic> values = event.snapshot.value as Map;
+      data = values.toString();
       setState(() {});
     });
   }
@@ -113,11 +104,12 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             GasIndicator(
-              gasLevel: _value,
+              gasLevel: double.parse(data),
               minLevel: 85,
               maxLevel: 200,
             ),
             const SizedBox(height: 24),
+            // Text(data),
           ],
         ),
       ),

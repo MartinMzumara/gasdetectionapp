@@ -57,9 +57,9 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 24,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       'Account Login',
                       style: TextStyle(
